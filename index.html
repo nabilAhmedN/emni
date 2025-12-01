@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TechHub - LWS Assignment</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/svg" href="./assets/logo.svg" />
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            :root {
+                --ink: #161616;
+                --muted: #6b7280;
+                --bg: #f7f7f7;
+                --card: #ffffff;
+                --accent: #ff385c;
+                --accent-2: #f97316;
+                --radius: 16px;
+                color-scheme: light;
+            }
+
+            body {
+                font-family: "DM Sans", "Inter", system-ui, -apple-system,
+                    sans-serif;
+                background: radial-gradient(
+                        circle at 18% 20%,
+                        rgba(255, 56, 92, 0.06),
+                        transparent 32%
+                    ),
+                    radial-gradient(
+                        circle at 80% 10%,
+                        rgba(249, 115, 22, 0.05),
+                        transparent 30%
+                    ),
+                    var(--bg);
+                color: var(--ink);
+                min-height: 100vh;
+            }
+
+            .soft-card {
+                background: var(--card);
+                border: 1px solid #e5e7eb;
+                border-radius: var(--radius);
+                box-shadow: 0 15px 35px rgba(17, 24, 39, 0.08);
+            }
+
+            .pill {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 6px 12px;
+                background: #fff4f7;
+                color: var(--accent);
+                border-radius: 999px;
+                font-weight: 600;
+                font-size: 0.85rem;
+            }
+
+            .button-primary {
+                background: linear-gradient(120deg, var(--accent), #ff6b81);
+                color: #ffffff;
+                border-radius: 12px;
+                font-weight: 600;
+                box-shadow: 0 12px 30px rgba(255, 56, 92, 0.35);
+            }
+
+            .button-primary:hover {
+                filter: brightness(1.03);
+            }
+
+            .button-ghost {
+                border: 1px solid #e5e7eb;
+                border-radius: 12px;
+                font-weight: 600;
+                color: var(--ink);
+                background: #ffffff;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav
+            class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200"
+        >
+            <div
+                class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between"
+            >
+                <div class="flex items-center gap-4">
+                    <div
+                        class="h-10 w-10 rounded-full bg-gradient-to-br from-rose-400 to-orange-300 flex items-center justify-center text-white font-bold"
+                    >
+                        TH
+                    </div>
+                    <div class="flex flex-col">
+                        <a
+                            href="#"
+                            class="text-xl font-semibold text-slate-900 tracking-tight"
+                            >TechHub</a
+                        >
+                        <span class="text-xs text-slate-500"
+                            >Gear for builders & dreamers</span
+                        >
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center gap-6 text-sm">
+                    <a href="#" class="text-slate-700 hover:text-slate-900"
+                        >Products</a
+                    >
+                    <a href="#" class="text-slate-700 hover:text-slate-900"
+                        >About</a
+                    >
+                    <a href="#" class="text-slate-700 hover:text-slate-900"
+                        >Support</a
+                    >
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="hidden sm:block">
+                        <div
+                            class="flex items-center gap-2 px-3 py-2 rounded-full border border-slate-200 bg-white shadow-sm"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4 text-slate-400"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <circle cx="11" cy="11" r="7"></circle>
+                                <line
+                                    x1="16.65"
+                                    y1="16.65"
+                                    x2="21"
+                                    y2="21"
+                                ></line>
+                            </svg>
+                            <input
+                                type="text"
+                                placeholder="Search laptops, GPUs, desktops..."
+                                class="bg-transparent text-sm placeholder:text-slate-400 focus:outline-none w-64"
+                            />
+                        </div>
+                    </div>
+                    <a
+                        href="cart.html"
+                        class="relative flex items-center gap-2 px-3 py-2 rounded-full border border-slate-200 bg-white shadow-sm hover:border-rose-300"
+                    >
+                        <svg
+                            class="w-5 h-5 text-rose-500"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                            ></path>
+                        </svg>
+                        <span class="text-sm font-semibold text-slate-900"
+                            >Cart</span
+                        >
+                        <span
+                            class="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-rose-500 text-white text-xs font-bold flex items-center justify-center shadow"
+                            >3</span
+                        >
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="max-w-6xl mx-auto px-4 py-12 space-y-10">
+            <!-- Hero -->
+            <section
+                class="soft-card px-6 sm:px-8 py-10 flex flex-col lg:flex-row gap-8"
+            >
+                <div class="flex-1 space-y-4">
+                    <span class="pill">
+                        <span class="h-2 w-2 rounded-full bg-rose-500"></span>
+                        Curated tech for 2025
+                    </span>
+                    <h1
+                        class="text-3xl sm:text-4xl font-semibold leading-tight text-slate-900"
+                    >
+                        Build a setup that feels handcrafted for you.
+                    </h1>
+                    <p class="text-lg text-slate-600 max-w-2xl">
+                        Premium desktops, laptops, and workstations tuned for
+                        creators, engineers, and gamers. Thoughtful thermals,
+                        quiet builds, and concierge support.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <button class="button-primary px-4 py-3">
+                            Shop flagship rigs
+                        </button>
+                        <button class="button-ghost px-4 py-3">
+                            Talk to a build specialist
+                        </button>
+                    </div>
+                    <div class="flex items-center gap-6 text-sm text-slate-600">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="h-6 w-6 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-semibold"
+                                >4.9</span
+                            >
+                            <span>Average customer rating</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="h-6 w-6 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-semibold"
+                                >24h</span
+                            >
+                            <span>Rapid build & dispatch</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-80">
+                    <div class="soft-card p-6 h-full">
+                        <h3 class="text-lg font-semibold text-slate-900 mb-2">
+                            Trending collections
+                        </h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-700"
+                                    >Creator Pro rigs</span
+                                >
+                                <span class="text-rose-500 font-semibold"
+                                    >+38%</span
+                                >
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-700"
+                                    >RTX 4090 builds</span
+                                >
+                                <span class="text-rose-500 font-semibold"
+                                    >Popular</span
+                                >
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-700"
+                                    >Ultra-light laptops</span
+                                >
+                                <span class="text-rose-500 font-semibold"
+                                    >Editor pick</span
+                                >
+                            </div>
+                        </div>
+                        <div
+                            class="mt-5 p-3 rounded-xl bg-rose-50 text-rose-700"
+                        >
+                            Concierge support included on every purchase.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filters & Sorting Section -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <!-- Sidebar Filters -->
+                <div class="md:col-span-1 space-y-4">
+                    <div class="soft-card p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-slate-900">
+                                Filters
+                            </h3>
+                            <button class="text-xs text-rose-500 font-semibold">
+                                Clear
+                            </button>
+                        </div>
+
+                        <!-- Category Filter -->
+                        <div class="mb-6">
+                            <h4 class="font-medium text-sm mb-3 text-slate-700">
+                                Category
+                            </h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        checked
+                                        class="w-4 h-4 text-rose-500 rounded border-slate-300"
+                                    />
+                                    <span class="ml-3 text-sm text-slate-700"
+                                        >Apple Mac Pro</span
+                                    >
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        class="w-4 h-4 text-rose-500 rounded border-slate-300"
+                                    />
+                                    <span class="ml-3 text-sm text-slate-700"
+                                        >Gaming Laptop</span
+                                    >
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        class="w-4 h-4 text-rose-500 rounded border-slate-300"
+                                    />
+                                    <span class="ml-3 text-sm text-slate-700"
+                                        >Workstation</span
+                                    >
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Price Filter -->
+                        <div class="mb-6">
+                            <h4 class="font-medium text-sm mb-3 text-slate-700">
+                                Price Range
+                            </h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        name="price"
+                                        class="w-4 h-4 text-rose-500"
+                                    />
+                                    <span class="ml-3 text-sm text-slate-700"
+                                        >$0 - $2000</span
+                                    >
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        name="price"
+                                        class="w-4 h-4 text-rose-500"
+                                    />
+                                    <span class="ml-3 text-sm text-slate-700"
+                                        >$2000 - $5000</span
+                                    >
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        name="price"
+                                        checked
+                                        class="w-4 h-4 text-rose-500"
+                                    />
+                                    <span class="ml-3 text-sm text-slate-700"
+                                        >$5000+</span
+                                    >
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Rating Filter -->
+                        <div>
+                            <h4 class="font-medium text-sm mb-3 text-slate-700">
+                                Rating
+                            </h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        checked
+                                        class="w-4 h-4 text-rose-500 rounded border-slate-300"
+                                    />
+                                    <span class="ml-3 text-sm text-slate-700"
+                                        >4.5 ⭐ & up</span
+                                    >
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        class="w-4 h-4 text-rose-500 rounded border-slate-300"
+                                    />
+                                    <span class="ml-3 text-sm text-slate-700"
+                                        >4.0 ⭐ & up</span
+                                    >
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        class="w-4 h-4 text-rose-500 rounded border-slate-300"
+                                    />
+                                    <span class="ml-3 text-sm text-slate-700"
+                                        >3.5 ⭐ & up</span
+                                    >
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="md:col-span-3">
+                    <!-- Sorting Options -->
+                    <div class="flex items-center justify-between mb-6">
+                        <p class="text-slate-600">Showing 12 products</p>
+                        <div class="flex items-center gap-2">
+                            <label
+                                for="sort"
+                                class="text-sm font-medium text-slate-700"
+                                >Sort by:</label
+                            >
+                            <select
+                                id="sort"
+                                class="px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 bg-white"
+                            >
+                                <option>Newest</option>
+                                <option>Oldest</option>
+                                <option>Price: Low to High</option>
+                                <option>Price: High to Low</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                    >
+                        <!-- Product Card 1 -->
+                        <div
+                            class="soft-card overflow-hidden hover:-translate-y-1 transition-all"
+                        >
+                            <div
+                                class="aspect-square bg-gradient-to-br from-slate-100 via-white to-rose-50 flex items-center justify-center"
+                            >
+                                <img
+                                    src="./assets/mac-pro-tower.webp"
+                                    alt="Apple Mac Pro Tower"
+                                    class="w-full h-full object-cover"
+                                />
+                            </div>
+                            <div class="p-5 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <h3
+                                        class="font-semibold text-lg text-slate-900 line-clamp-2"
+                                    >
+                                        Apple Mac Pro Tower
+                                    </h3>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm">
+                                    <span class="text-amber-500">⭐ 4.8</span>
+                                    <span class="text-slate-500"
+                                        >(35 reviews)</span
+                                    >
+                                </div>
+                                <!-- create date -->
+                                <p class="text-slate-500 text-sm">
+                                    Upload on: <span class="font-semibold">15 Nov 2025</span>
+                                </p>
+
+                                <p class="text-slate-600 text-sm line-clamp-2">
+                                    The ultimate workstation with M2 Ultra chip,
+                                    designed for heavy video editing and 3D
+                                    rendering.
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <span
+                                        class="text-2xl font-bold text-slate-900"
+                                        >$6,999</span
+                                    >
+                                    <span
+                                        class="text-sm text-emerald-600 font-medium"
+                                        >In Stock (5)</span
+                                    >
+                                </div>
+                                <button
+                                    class="w-full button-primary py-2.5 rounded-lg font-semibold"
+                                >
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 2 -->
+                        <div
+                            class="soft-card overflow-hidden hover:-translate-y-1 transition-all"
+                        >
+                            <div
+                                class="aspect-square bg-gradient-to-br from-slate-100 via-white to-rose-50 flex items-center justify-center"
+                            >
+                                <img
+                                    src="./assets/high-performance-banner.avif"
+                                    alt="Gaming Laptop"
+                                    class="w-full h-full object-cover"
+                                />
+                            </div>
+                            <div class="p-5 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <h3
+                                        class="font-semibold text-lg text-slate-900 line-clamp-2"
+                                    >
+                                        High-Performance Gaming Laptop
+                                    </h3>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm">
+                                    <span class="text-amber-500">⭐ 4.6</span>
+                                    <span class="text-slate-500"
+                                        >(128 reviews)</span
+                                    >
+                                </div>
+                                <!-- create date -->
+                                <p class="text-slate-500 text-sm">
+                                    Upload on: <span class="font-semibold">20 Nov 2025</span>
+                                </p>
+
+                                <p class="text-slate-600 text-sm line-clamp-2">
+                                    RTX 4090, Intel i9, 32GB RAM, perfect for
+                                    gaming and content creation.
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <span
+                                        class="text-2xl font-bold text-slate-900"
+                                        >$3,299</span
+                                    >
+                                    <span
+                                        class="text-sm text-emerald-600 font-medium"
+                                        >In Stock (12)</span
+                                    >
+                                </div>
+                                <button
+                                    class="w-full button-primary py-2.5 rounded-lg font-semibold"
+                                >
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 3 -->
+                        <div
+                            class="soft-card overflow-hidden hover:-translate-y-1 transition-all"
+                        >
+                            <div
+                                class="aspect-square bg-gradient-to-br from-slate-100 via-white to-rose-50 flex items-center justify-center"
+                            >
+                                <img
+                                    src="./assets/pro-workstation.jpg"
+                                    alt="Workstation"
+                                    class="w-full h-full object-cover"
+                                />
+                            </div>
+                            <div class="p-5 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <h3
+                                        class="font-semibold text-lg text-slate-900 line-clamp-2"
+                                    >
+                                        Professional Workstation
+                                    </h3>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm">
+                                    <span class="text-amber-500">⭐ 4.9</span>
+                                    <span class="text-slate-500"
+                                        >(67 reviews)</span
+                                    >
+                                </div>
+                                <!-- create date -->
+                                <p class="text-slate-500 text-sm">
+                                    Upload on: <span class="font-semibold">18 Nov 2025</span>
+                                </p>
+
+                                <p class="text-slate-600 text-sm line-clamp-2">
+                                    Dual Xeon processors, 64GB ECC RAM, for
+                                    professional 3D rendering.
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <span
+                                        class="text-2xl font-bold text-slate-900"
+                                        >$8,499</span
+                                    >
+                                    <span
+                                        class="text-sm text-emerald-600 font-medium"
+                                        >In Stock (3)</span
+                                    >
+                                </div>
+                                <button
+                                    class="w-full button-primary py-2.5 rounded-lg font-semibold"
+                                >
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 4 -->
+                        <div
+                            class="soft-card overflow-hidden hover:-translate-y-1 transition-all"
+                        >
+                            <div
+                                class="aspect-square bg-gradient-to-br from-slate-100 via-white to-rose-50 flex items-center justify-center"
+                            >
+                                <img
+                                    src="./assets/ultra-thine.jpeg"
+                                    alt="Ultrabook"
+                                    class="w-full h-full object-cover"
+                                />
+                            </div>
+                            <div class="p-5 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <h3
+                                        class="font-semibold text-lg text-slate-900 line-clamp-2"
+                                    >
+                                        Ultra-thin Ultrabook
+                                    </h3>
+                                    <span
+                                        class="px-2 py-1 text-xs rounded-full bg-orange-50 text-orange-600 font-semibold"
+                                        >Portable</span
+                                    >
+                                </div>
+                                <div class="flex items-center gap-2 text-sm">
+                                    <span class="text-amber-500">⭐ 4.5</span>
+                                    <span class="text-slate-500"
+                                        >(89 reviews)</span
+                                    >
+                                </div>
+                                <!-- create date -->
+                                <p class="text-slate-500 text-sm">
+                                    Upload on: <span class="font-semibold">22 Nov 2025</span>
+                                </p>
+
+                                <p class="text-slate-600 text-sm line-clamp-2">
+                                    Lightweight at 2.5 lbs, 16GB RAM, perfect
+                                    for professionals on the go.
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <span
+                                        class="text-2xl font-bold text-slate-900"
+                                        >$1,799</span
+                                    >
+                                    <span
+                                        class="text-sm text-emerald-600 font-medium"
+                                        >In Stock (18)</span
+                                    >
+                                </div>
+                                <button
+                                    class="w-full button-primary py-2.5 rounded-lg font-semibold"
+                                >
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 5 -->
+                        <div
+                            class="soft-card overflow-hidden hover:-translate-y-1 transition-all"
+                        >
+                            <div
+                                class="aspect-square bg-gradient-to-br from-slate-100 via-white to-rose-50 flex items-center justify-center"
+                            >
+                                <img
+                                    src="./assets/pro-workstation.jpg"
+                                    alt="Desktop"
+                                    class="w-full h-full object-cover"
+                                />
+                            </div>
+                            <div class="p-5 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <h3
+                                        class="font-semibold text-lg text-slate-900 line-clamp-2"
+                                    >
+                                        Compact Desktop PC
+                                    </h3>
+                                </div>
+                                <div class="flex items-center gap-2 text-sm">
+                                    <span class="text-amber-500">⭐ 4.3</span>
+                                    <span class="text-slate-500"
+                                        >(45 reviews)</span
+                                    >
+                                </div>
+                                <!-- create date -->
+                                <p class="text-slate-500 text-sm">
+                                    Upload on: <span class="font-semibold">10 Nov 2025</span>
+                                </p>
+
+                                <p class="text-slate-600 text-sm line-clamp-2">
+                                    Small form factor, RTX 3080, 16GB RAM, great
+                                    for home office setup.
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <span
+                                        class="text-2xl font-bold text-slate-900"
+                                        >$2,199</span
+                                    >
+                                    <span
+                                        class="text-sm text-emerald-600 font-medium"
+                                        >In Stock (8)</span
+                                    >
+                                </div>
+                                <button
+                                    class="w-full button-primary py-2.5 rounded-lg font-semibold"
+                                >
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 6 - Loading Skeleton -->
+                        <div class="soft-card overflow-hidden">
+                            <div
+                                class="aspect-square bg-slate-100 animate-pulse"
+                            ></div>
+                            <div class="p-4 space-y-3">
+                                <div
+                                    class="h-4 bg-slate-200 rounded animate-pulse"
+                                ></div>
+                                <div
+                                    class="h-4 bg-slate-200 rounded animate-pulse w-3/4"
+                                ></div>
+                                <div
+                                    class="h-4 bg-slate-200 rounded animate-pulse w-2/3"
+                                ></div>
+                                <div
+                                    class="h-4 bg-slate-200 rounded animate-pulse w-1/2"
+                                ></div>
+                                <button
+                                    class="w-full bg-slate-200 text-white py-2 rounded-lg font-medium mt-2 animate-pulse"
+                                    disabled
+                                ></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-slate-200 mt-12">
+            <div class="max-w-6xl mx-auto px-4 py-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                    <div>
+                        <h4 class="font-semibold mb-3 text-slate-900">
+                            About TechHub
+                        </h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Your trusted source for premium tech products and
+                            cutting-edge electronics.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-3 text-slate-900">
+                            Quick Links
+                        </h4>
+                        <ul class="space-y-2 text-sm text-slate-600">
+                            <li>
+                                <a href="#" class="hover:text-slate-900"
+                                    >Products</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#" class="hover:text-slate-900"
+                                    >Categories</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#" class="hover:text-slate-900"
+                                    >Deals</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#" class="hover:text-slate-900"
+                                    >Support</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-3 text-slate-900">
+                            Customer Service
+                        </h4>
+                        <ul class="space-y-2 text-sm text-slate-600">
+                            <li>
+                                <a href="#" class="hover:text-slate-900"
+                                    >Contact Us</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#" class="hover:text-slate-900"
+                                    >Shipping Info</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#" class="hover:text-slate-900"
+                                    >Returns</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#" class="hover:text-slate-900">FAQ</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-3 text-slate-900">
+                            Follow Us
+                        </h4>
+                        <div class="flex gap-4 text-slate-600">
+                            <a href="#" class="hover:text-slate-900">Twitter</a>
+                            <a href="#" class="hover:text-slate-900"
+                                >Facebook</a
+                            >
+                            <a href="#" class="hover:text-slate-900"
+                                >Instagram</a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="border-t border-slate-200 pt-8 text-center text-slate-600 text-sm"
+                >
+                    <p>&copy; 2025 Learn with sumit. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
